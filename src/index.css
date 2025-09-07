@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* :root {
+
+} */
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+/* body {
+  min-width: 320px;
+  min-height: 100vh;
+} */
+
+button {
+border: none;
+}
+
+
+
+
