@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import MainLayout from "./layouts/MainLayout/MainLayout"
 import { Suspense } from "react"
-import PlantsPage from "./features/plants/PlantsPage/PlantsPage"
+import PlantsPage from "./pages/PlantsPage/PlantsPage"
 
 function App() {
   
