@@ -1,9 +1,10 @@
+import { NavLink } from 'react-router-dom'
 import css from './Header.module.css'
 
 const Header = () => {
   return (
     <div className={css.header}>
-      Header
+      <NavLink to={"/auth/signin"} >Sign in</NavLink>
     </div>
   )
 }

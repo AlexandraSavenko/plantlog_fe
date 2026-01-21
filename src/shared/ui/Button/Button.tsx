@@ -1,4 +1,4 @@
-import css from "./BaseButtonStart.module.css"
+import css from "./Button.module.css"
 import type { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

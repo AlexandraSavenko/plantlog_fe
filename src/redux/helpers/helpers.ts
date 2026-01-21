@@ -1,12 +1,15 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
-import type { ApiError } from "../types/apiError";
+import type { ApiError, ErrorState } from "../types/apiError";
+import type {Draft} from 'immer';
 
-export const handlePending = (state: RootState) => {
-    state.isLoading = true;
-}
+export const handlePending = <T extends ErrorState> (state: Draft<T>) => {
+  state.isLoading = true;
+};
 
-export const handleError = (state: RootState, action: PayloadAction<ApiError>) => {
+export const handleError = <T extends ErrorState>(
+  state: Draft<T>,
+  action: PayloadAction<ApiError | undefined>,
+) => {
   state.isLoading = false;
-  state.isError = action.payload;
-}
+  state.isError = action.payload ?? null;
+};

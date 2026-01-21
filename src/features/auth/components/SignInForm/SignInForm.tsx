@@ -10,13 +10,13 @@ import type { AuthFormValues } from "../../models/types";
 import TextInput from "../../../../shared/ui/TextInput/TextInput";
 import ErrorMessage from "../../../../shared/ui/ErrorMessage/ErrorMessage";
 import Modal from "../../../../shared/ui/Modal/Modal";
-import Button from "../../../../shared/ui/Button/Button";
 import { setErrorNull } from "../../../../redux/auth/slice";
 import { selectIsError } from "../../../../redux/auth/selectros";
+import Button from "../../../../shared/ui/Button/Button";
 
 
 const SigninForm = () => {
-  const error = useSelector(selectIsError) === "error";
+  const error = useSelector(selectIsError);
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = async (
@@ -30,8 +30,9 @@ const SigninForm = () => {
     actions.resetForm();
   };
 
-  return (
-    <Formik
+  return (<>
+  <p>Sign in form</p>
+  <Formik
       initialValues={{ email: "", password: "" }}
       onSubmit={handleSubmit}
       validationSchema={SignInSchema}
@@ -61,6 +62,8 @@ const SigninForm = () => {
         )}
       </Form>
     </Formik>
+  </>
+    
   );
 };
 
