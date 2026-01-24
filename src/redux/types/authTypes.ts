@@ -1,10 +1,11 @@
-import type { ApiError } from "./apiError";
+import type { isError } from "./isError";
+
 
 export interface AuthInitialState {
   username: string;
   favorites: string[];
   isLoggedIn: boolean;
   isLoading: boolean;
-  isError: ApiError | null;
+  isError: isError | null;
 }
 
