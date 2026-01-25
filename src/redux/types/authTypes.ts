@@ -1,5 +1,8 @@
 import type { isError } from "./isError";
 
+export interface SignInResponse {
+  username: string,
+}
 
 export interface AuthInitialState {
   username: string;

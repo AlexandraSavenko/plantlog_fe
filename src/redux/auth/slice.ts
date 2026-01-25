@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signin, signup } from "./operations";
+import { signin } from "./operations";
 import { handlePending } from "../helpers/helpers";
 import type { AuthInitialState } from "../types/authTypes";
 
@@ -37,6 +37,8 @@ const authSlice = createSlice({
       .addCase(signin.pending, handlePending)
       .addCase(signin.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isError = null
+        state.username = action.payload.username
         console.log(action.payload);
       }),
 });
