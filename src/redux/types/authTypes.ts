@@ -1,14 +1,20 @@
 import type { isError } from "./isError";
 
 export interface SignInResponse {
-  username: string,
+  userId: string;
+  username: string;
+  favoritePlants: string[];
+  authProvider: string;
 }
 
 export interface AuthInitialState {
-  username: string;
-  favorites: string[];
+  user: {
+    userId: string;
+    username: string;
+    favoritePlants: string[];
+    authProvider: string;
+  };
   isLoggedIn: boolean;
   isLoading: boolean;
   isError: isError | null;
 }
-

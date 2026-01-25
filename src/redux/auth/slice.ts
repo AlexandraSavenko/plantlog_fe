@@ -4,8 +4,12 @@ import { handlePending } from "../helpers/helpers";
 import type { AuthInitialState } from "../types/authTypes";
 
 const authIniticalState: AuthInitialState = {
-  username: "",
-  favorites: [],
+  user: {
+    username: "",
+    userId: "",
+    favoritePlants: [],
+    authProvider: ""
+  },
   isLoggedIn: false,
   isLoading: false,
   isError: null,
@@ -16,11 +20,11 @@ const authSlice = createSlice({
   initialState: authIniticalState,
   reducers: {
     toggleToFavorites: (state, action) => {
-      const isFav = state.favorites.includes(action.payload);
+      const isFav = state.user.favoritePlants.includes(action.payload);
       if (isFav) {
-        state.favorites = state.favorites.filter((e) => e === action.payload);
+        state.user.favoritePlants = state.user.favoritePlants.filter((e) => e === action.payload);
       } else {
-        state.favorites.push(action.payload);
+        state.user.favoritePlants.push(action.payload);
       }
     },
     setErrorNull: (state) => {
@@ -36,10 +40,13 @@ const authSlice = createSlice({
       // })
       .addCase(signin.pending, handlePending)
       .addCase(signin.fulfilled, (state, action) => {
+        const {userId, username, favoritePlants, authProvider} = action.payload
         state.isLoading = false;
         state.isError = null
-        state.username = action.payload.username
-        console.log(action.payload);
+        state.user.favoritePlants = favoritePlants
+        state.user.username = username;
+        state.user.authProvider = authProvider;
+        state.user.userId = userId;
       }),
 });
 
