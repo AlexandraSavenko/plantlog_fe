@@ -10,7 +10,7 @@ const authIniticalState: AuthInitialState = {
     favoritePlants: [],
     authProvider: ""
   },
-  isLoggedIn: false,
+  isSignedIn: false,
   isLoading: false,
   isError: null,
 };
@@ -42,8 +42,9 @@ const authSlice = createSlice({
       .addCase(signin.fulfilled, (state, action) => {
         const {userId, username, favoritePlants, authProvider} = action.payload
         state.isLoading = false;
-        state.isError = null
-        state.user.favoritePlants = favoritePlants
+        state.isError = null;
+        state.isSignedIn = true;
+        state.user.favoritePlants = favoritePlants;
         state.user.username = username;
         state.user.authProvider = authProvider;
         state.user.userId = userId;

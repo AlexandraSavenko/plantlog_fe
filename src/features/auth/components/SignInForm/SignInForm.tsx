@@ -25,7 +25,7 @@ const SigninForm = () => {
   ): Promise<void> => {
     const res = await dispatch(signin(values));
     if (signin.fulfilled.match(res)) {
-      navigate("/home");
+      navigate("/profile/own");
     }
     actions.resetForm();
   };

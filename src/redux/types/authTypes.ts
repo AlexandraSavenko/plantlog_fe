@@ -14,7 +14,7 @@ export interface AuthInitialState {
     favoritePlants: string[];
     authProvider: string;
   };
-  isLoggedIn: boolean;
+  isSignedIn: boolean;
   isLoading: boolean;
   isError: isError | null;
 }
