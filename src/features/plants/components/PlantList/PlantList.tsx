@@ -9,7 +9,7 @@ const PlantList = ({plants}: PlantListProps) => {
   return (
     <ul className={css.plantList}>
       {
-        plants.map(el => <li>{
+        plants.map(el => <li key={el._id}>{
             <PlantCard plant={el}/>
             }</li>)
       }

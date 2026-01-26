@@ -9,13 +9,17 @@ export interface GetPlantsResponse {
     perPage: number,
     totalItems: number
 }
+
+
 export interface GetPlantsParams {
-  type: string;
+  type?: string;
   page: number;
   perPage: number;
 }
 
-export interface PlantsInitialState extends GetPlantsResponse {
+export interface PlantsInitialState {
+  all: GetPlantsResponse;
+  own: GetPlantsResponse;
   isLoading: boolean;
   isError: isError | null;
 }
