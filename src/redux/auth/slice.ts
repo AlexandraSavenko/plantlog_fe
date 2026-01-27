@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signin } from "./operations";
+import { signin, signout } from "./operations";
 import { handlePending } from "../helpers/helpers";
 import type { AuthInitialState } from "../types/authTypes";
 
-const authIniticalState: AuthInitialState = {
-  user: {
+const user = {
     username: "",
     userId: "",
     favoritePlants: [],
     authProvider: ""
-  },
+  }
+const authIniticalState: AuthInitialState = {
+  user,
   isSignedIn: false,
   isLoading: false,
   isError: null,
@@ -48,7 +49,12 @@ const authSlice = createSlice({
         state.user.username = username;
         state.user.authProvider = authProvider;
         state.user.userId = userId;
-      }),
+      }).addCase(signout.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isError = null;
+        state.isSignedIn = false;
+        state.user = user;
+      })
 });
 
 export default authSlice.reducer;

@@ -26,15 +26,24 @@ export const signin = createAsyncThunk<
 >("auth/signin", async (credentials, { rejectWithValue }) => {
   return safeRequest(async () => {
     const response = await api.post("/auth/signin", credentials);
-    const { accessToken} = response.data.data
-    console.log(response.data.data)
-    api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`
+    const { accessToken } = response.data.data;
+    console.log(response.data.data);
+    api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
     // console.log('signin data', data)
     // data: { accessToken: '5jgha5CxFMVk9fpN8SlDRHlNVa9rhu4Z/L9o4m7d'}
     // message: "User has been successfully signed in"
     // status: 200
-    const { data } = await api.get("/user")
-    console.log(data.data)
+    const { data } = await api.get("/user");
+    console.log(data.data);
     return data.data;
   }, rejectWithValue);
 });
+
+export const signout = createAsyncThunk(
+  "auth/signout",
+  async (_, { rejectWithValue }) => {
+    return safeRequest(async () => {
+      await api.post("/auth/signout");
+    }, rejectWithValue);
+  },
+);

@@ -36,6 +36,7 @@ export const getOwnPlants = createAsyncThunk<
   getPlants({ ...params, type: "own" }, thunkAPI),
 );
 
+
 // console.log("get all plants response", response.data.data.data);
 // data: []
 // hasNextPage: false
