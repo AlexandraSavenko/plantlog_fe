@@ -7,8 +7,11 @@ const AuthPage = () => {
     const {authType} = useParams()
   return (
     <div className={css.authPage}>
-      {authType === "signin" && <SigninForm/>}
+      <div className={css.glassBox}>
+        {authType === "signin" && <SigninForm/>}
       {authType === "signup" && <SignUpForm/>}
+      </div>
+      
     </div>
   )
 }

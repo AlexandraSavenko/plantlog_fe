@@ -1,0 +1,24 @@
+
+    /* From https://css.glass */
+
+.authPage {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background-color: bisque;
+}
+
+.glassBox {
+    width: 100%;
+    max-width: 420px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+background: rgba(141, 163, 196, 0.15);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.1px);
+-webkit-backdrop-filter: blur(6.1px);
+border: 1px solid rgba(141, 163, 196, 0.27);
+}
+
+

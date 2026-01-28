@@ -1,0 +1,13 @@
+.button {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding:0.5rem;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.button:active{
+    transform: scale(0.97)
+}

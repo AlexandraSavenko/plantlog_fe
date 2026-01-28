@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { safeRequest, type ApiError } from "../../api/withErrorHandling";
 import { api } from "../../api/axios";
-
 import type { GetPlantsParams, GetPlantsResponse } from "../types/plantsTypes";
+
 
 const getPlants = async (
   params: GetPlantsParams,
-  { rejectWithValue }: ThunkAPI<{ rejectWithValue: ApiError }>,
+  { rejectWithValue }
 ) => {
   return safeRequest(async () => {    
     const { type, page, perPage } = params;

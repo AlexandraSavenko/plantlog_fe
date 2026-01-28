@@ -1,0 +1,30 @@
+.inputBox {
+    width: 100%;
+}
+.inputWrap{
+    width: 100%;
+    position: relative;
+    margin: 0.5rem 0;
+}
+.input{
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.error{
+    min-height: 1.2em;
+    font-size: 0.875rem;
+     color: brown;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid red;
+    fill: none;
+    stroke: black;
+}

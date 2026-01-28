@@ -30,8 +30,7 @@ const SigninForm = () => {
     actions.resetForm();
   };
 
-  return (<>
-  <p>Sign in form</p>
+  return (<div className={css.formWrap}>
   <Formik
       initialValues={{ email: "", password: "" }}
       onSubmit={handleSubmit}
@@ -50,19 +49,18 @@ const SigninForm = () => {
           name={"password"}
           type={"text"}
           placeholder={"********"}
-          icon={"icon-email"}
+          icon={"icon-email-svg-repo"}
         />
-
-        <Link className={css.forgotPassword} to="/">
-          Забули пароль?
-        </Link>
         <Button label="Увійти" />
         {(error &&
           <Modal onClose={() => dispatch(setErrorNull())}>{<ErrorMessage />}</Modal>
         )}
       </Form>
     </Formik>
-  </>
+    <Link className={css.forgotPassword} to="/">
+          Забули пароль?
+        </Link>
+  </div>
     
   );
 };

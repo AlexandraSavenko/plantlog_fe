@@ -11,8 +11,8 @@ const TextInput: React.FC<TextInputProps> = ({
   icon,
 }) => {
   return (
-    <div>
-      <label htmlFor="name">{label}</label>
+    <div className={css.inputBox}>
+      <label htmlFor={name}>{label}</label>
       <div className={css.inputWrap}>
         <Field
           className={css.input}
@@ -24,7 +24,9 @@ const TextInput: React.FC<TextInputProps> = ({
         <svg className={css.icon}>
           <use href={`/icons.svg#${icon}`}></use>
         </svg>
-        <ErrorMessage className={css.errorMessage} name={name} component="span" />
+      </div>
+      <div className={css.error}>
+              <ErrorMessage className={css.errorMessage} name={name} component="span" />
       </div>
     </div>
   );
