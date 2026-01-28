@@ -13,4 +13,11 @@ margin-bottom: 0.5rem;
 .forgotPassword{
     text-align: end;
     align-self: flex-end;
+    color: var(--dark-brown);
+    transition: transform 0.1s ease;
+}
+
+.forgotPassword:hover{
+    transform: scale(0.97);
+    color: var(--brown);
 }

@@ -6,7 +6,7 @@
     display: grid;
     place-items: center;
     padding: 1rem;
-    background-color: bisque;
+    background: #7bc67b;
 }
 
 .glassBox {

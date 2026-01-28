@@ -1,0 +1,26 @@
+.header{
+    background: #6b8c42;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .link{
+    color: var(--black);
+    transition: transform 0.1s ease;
+}
+
+.header .link:hover{
+    color: var(--brown);
+    transform: scale(0.97);
+}
+
+.header .activeLink{
+    text-decoration: underline;
+}
+.header .authWrap{
+    display: flex;
+    gap: 1rem;
+}

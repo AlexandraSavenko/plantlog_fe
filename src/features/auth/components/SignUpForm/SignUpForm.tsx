@@ -1,13 +1,13 @@
-import TextInput from '../../../../shared/ui/TextInput/TextInput'
-import css from './SignUpForm.module.css'
+import TextInput from "../../../../shared/ui/Input/TextInput/TextInput";
+import css from "./SignUpForm.module.css";
 
 const SignUpForm = () => {
   return (
     <div>
-        Sign Up form
+      Sign Up form
       {/* <TextInput/> */}
     </div>
-  )
-}
+  );
+};
 
-export default SignUpForm
+export default SignUpForm;

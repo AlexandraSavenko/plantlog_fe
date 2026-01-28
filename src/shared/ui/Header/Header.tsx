@@ -16,17 +16,18 @@ const Header = () => {
   }
   return (
     <div className={`${css.header} container`}>
+      <NavLink className={({isActive}) => `${isActive && css.activeLink} ${css.link}`} to={"/"}>All plants</NavLink>
       {isSignedIn ? (
         <div>
           <p>{`Hello, ${user.username}`}</p>
-          <NavLink to={"/"}>All plants</NavLink>
-          <NavLink to={"/profile/own"}>My plants</NavLink>
+          
+          <NavLink className={({isActive}) => `${isActive && css.activeLink} ${css.link}`} to={"/profile/own"}>My plants</NavLink>
           <button onClick={handleLogout}>Sign out</button>
         </div>
       ) : (
-        <div>
-          <NavLink to={"/auth/signin"}>Sign in</NavLink>
-          <NavLink to={"/auth/signup"}>Sign up</NavLink>
+        <div className={css.authWrap}>
+          <NavLink className={({isActive}) => `${isActive && css.activeLink} ${css.link}`} to={"/auth/signin"}>Sign in</NavLink>
+          <NavLink className={({isActive}) => `${isActive && css.activeLink} ${css.link}`} to={"/auth/signup"}>Sign up</NavLink>
         </div>
       )}
     </div>

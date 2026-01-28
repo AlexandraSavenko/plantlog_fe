@@ -6,12 +6,12 @@ interface MainLayoutProps {
 }
 const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
   return (
-    <>
+    <div className={`${css.layout} container`}>
      <Header/>
-     <div className={`${css.contentWrap} container`}>
+     <div className={css.contentWrap}>
       {children}
       </div> 
-    </>
+    </div>
   )
 }
 

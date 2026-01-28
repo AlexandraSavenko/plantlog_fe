@@ -1,6 +1,9 @@
 .inputBox {
     width: 100%;
 }
+.inputBox label{
+    color: var(--black)
+}
 .inputWrap{
     width: 100%;
     position: relative;
@@ -9,12 +12,15 @@
 .input{
     width: 100%;
     padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--black);
+    background-color: var(--pale-yellowish-green);
 }
 
 .error{
     min-height: 1.2em;
     font-size: 0.875rem;
-     color: brown;
+     color: var(--red);
 }
 
 .icon {
@@ -24,7 +30,5 @@
     right: 4%;
     top: 50%;
     transform: translateY(-50%);
-    border: 1px solid red;
     fill: none;
-    stroke: black;
 }
