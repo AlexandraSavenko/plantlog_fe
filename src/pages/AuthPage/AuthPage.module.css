@@ -6,7 +6,10 @@
     display: grid;
     place-items: center;
     padding: 1rem;
-    background: #7bc67b;
+    background-image: url("/greenhouse.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
 }
 
 .glassBox {

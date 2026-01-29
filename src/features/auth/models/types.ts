@@ -1,5 +1,8 @@
 export interface AuthFormValues {
-    username?: string;
     email: string;
     password: string
+}
+
+export interface SignUpFormValues extends AuthFormValues {
+    username: string
 }

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import MainLayout from "./layouts/MainLayout/MainLayout"
-import { Suspense, useEffect } from "react"
+import { Suspense } from "react"
 import PlantPage from "./pages/PlantPage/PlantPage"
 import AuthPage from "./pages/AuthPage/AuthPage"
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"
@@ -11,7 +11,6 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage"
 
 function App() {
   const isAuth = useSelector(selectIsSignedIn)
-  useEffect(() => {console.log(isAuth)}, [isAuth])
   return (
   <Suspense fallback={<div>Loading page...</div>}>
     <MainLayout>

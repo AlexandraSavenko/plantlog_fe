@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const SignInSchema = Yup.object().shape({
+const authBaseSchema = {
   email: Yup.string()
     .trim()
     .matches(/^[\x20-\x7E]+$/, "Email must use standard Latin characters")
@@ -11,4 +11,14 @@ export const SignInSchema = Yup.object().shape({
     .min(8)
     .max(60)
     .required("Please enter your password"),
+};
+export const SignUpSchema = Yup.object().shape({
+  username: Yup.string().trim().max(60),
+  ...authBaseSchema,
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Passwords must match")
+    .required(),
+});
+export const SignInSchema = Yup.object().shape({
+  ...authBaseSchema,
 });

@@ -1,0 +1,10 @@
+.googleBtn{
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.button:active{
+    transform: scale(0.97);
+}

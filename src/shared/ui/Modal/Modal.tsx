@@ -10,7 +10,7 @@ const Modal = ({onClose, children} : ModalProps) => {
     createPortal(
         <div>
           <div className={css.backdrop}></div>
-          <div className={css.errorMess}>
+          <div className={css.content}>
             <button onClick={() => onClose?.()} className={css.button}>
               X
             </button>

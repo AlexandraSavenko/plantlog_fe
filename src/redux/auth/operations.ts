@@ -1,14 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../api/axios";
 import { safeRequest, type ApiError } from "../../api/withErrorHandling";
-import type { AuthFormValues } from "../../features/auth/models/types";
+import type { AuthFormValues, SignUpFormValues } from "../../features/auth/models/types";
 import type { SignInResponse } from "../types/authTypes";
 
 //createAsyncThunk<Returned, ThunkArg, ThunkApiConfig>
 
 export const signup = createAsyncThunk<
   { message: string },
-  AuthFormValues,
+  SignUpFormValues,
   { rejectValue: ApiError }
 >("auth/signin", async (credentials, { rejectWithValue }) => {
   return safeRequest(async () => {
@@ -47,3 +47,14 @@ export const signout = createAsyncThunk(
     }, rejectWithValue);
   },
 );
+
+export const signWithGoogle = createAsyncThunk<SignInResponse, string, {rejectValue: ApiError}>(
+  "auth/gsign",
+  async (code, {rejectWithValue}) => {
+return safeRequest(async () => {
+  const {data } = await api.post("/auth/confirm-oauth", {code})
+  console.log(data)
+  return data;
+}, rejectWithValue)
+  }
+)
