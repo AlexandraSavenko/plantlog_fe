@@ -12,11 +12,14 @@ const PlantPage = () => {
   useEffect(() => {
 dispatch(getAllPlants({ page: 1, perPage: 4}))
   }, [])
+  if(!plants || plants.length === 0){
+    return <p>Sorry, there's a problem with data</p>
+  }
   return (
-    <div className={css.plantPage}>
+    <div className={`${css.plantPage} container`}>
       <PlantList plants={plants}/>
     </div>
   )
 }
 
-export default PlantPage
+export default PlantPage;

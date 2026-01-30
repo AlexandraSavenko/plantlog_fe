@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signin, signout } from "./operations";
+import { signin, signout, signWithGoogle } from "./operations";
 import { handlePending } from "../helpers/helpers";
 import type { AuthInitialState } from "../types/authTypes";
 
@@ -54,6 +54,15 @@ const authSlice = createSlice({
         state.isError = null;
         state.isSignedIn = false;
         state.user = user;
+      }).addCase(signWithGoogle.fulfilled, (state, action) => {
+        const {userId, username, favoritePlants, authProvider} = action.payload
+        state.isLoading = false;
+        state.isError = null;
+        state.isSignedIn = true;
+        state.user.favoritePlants = favoritePlants;
+        state.user.username = username;
+        state.user.authProvider = authProvider;
+        state.user.userId = userId;
       })
 });
 

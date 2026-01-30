@@ -9,6 +9,7 @@ const GoogleLoginButton = () => {
   const login = useGoogleLogin({
     flow: "auth-code",
     onSuccess: ({ code }) => {
+      console.log(code)
       // send code to backend
     dispatch(signWithGoogle(code))
     },

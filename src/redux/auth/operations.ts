@@ -52,9 +52,14 @@ export const signWithGoogle = createAsyncThunk<SignInResponse, string, {rejectVa
   "auth/gsign",
   async (code, {rejectWithValue}) => {
 return safeRequest(async () => {
-  const {data } = await api.post("/auth/confirm-oauth", {code})
-  console.log(data)
-  return data;
+  console.log("thunk code", code)
+  const response = await api.post("/auth/confirm-oauth", {code})
+  const { accessToken } = response.data.data;
+    console.log(response.data.data);
+    api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    const { data } = await api.get("/user");
+    console.log(data.data);
+    return data.data;
 }, rejectWithValue)
   }
 )

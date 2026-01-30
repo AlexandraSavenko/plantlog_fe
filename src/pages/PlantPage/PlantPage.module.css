@@ -1,0 +1,6 @@
+.plantPage{
+    min-height: 100vh;
+    background-color: var(--dark-sand);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

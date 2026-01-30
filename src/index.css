@@ -18,7 +18,7 @@ text-hover - brown */
   --pale-green: #a7b99e;
   --pale-yellowish-green: #eff7d3;
   --sand: #ffffb5;
-  --dayk-sand: #d9bf77;
+  --dark-sand: #d9bf77;
 }
 body {
   background: var(--black);
