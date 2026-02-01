@@ -1,14 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../api/axios";
 import { safeRequest, type ApiError } from "../../api/withErrorHandling";
-import type { AuthFormValues, SignUpFormValues } from "../../features/auth/models/types";
+import type { AuthFormValues, SignUpPayload } from "../../features/auth/models/types";
 import type { SignInResponse } from "../types/authTypes";
 
 //createAsyncThunk<Returned, ThunkArg, ThunkApiConfig>
 
 export const signup = createAsyncThunk<
   { message: string },
-  SignUpFormValues,
+  SignUpPayload,
   { rejectValue: ApiError }
 >("auth/signin", async (credentials, { rejectWithValue }) => {
   return safeRequest(async () => {
@@ -19,6 +19,12 @@ export const signup = createAsyncThunk<
   }, rejectWithValue);
 });
 
+export const verifyEmail = createAsyncThunk("auth/verify", async (token, {rejectWithValue}) => {
+  return safeRequest(async () => {
+const response = api.get("auth/verify", {token})
+
+  }, rejectWithValue )
+})
 export const signin = createAsyncThunk<
   SignInResponse,
   AuthFormValues,
@@ -29,10 +35,6 @@ export const signin = createAsyncThunk<
     const { accessToken } = response.data.data;
     console.log(response.data.data);
     api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-    // console.log('signin data', data)
-    // data: { accessToken: '5jgha5CxFMVk9fpN8SlDRHlNVa9rhu4Z/L9o4m7d'}
-    // message: "User has been successfully signed in"
-    // status: 200
     const { data } = await api.get("/user");
     console.log(data.data);
     return data.data;
@@ -52,10 +54,8 @@ export const signWithGoogle = createAsyncThunk<SignInResponse, string, {rejectVa
   "auth/gsign",
   async (code, {rejectWithValue}) => {
 return safeRequest(async () => {
-  console.log("thunk code", code)
   const response = await api.post("/auth/confirm-oauth", {code})
   const { accessToken } = response.data.data;
-    console.log(response.data.data);
     api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
     const { data } = await api.get("/user");
     console.log(data.data);

@@ -55,6 +55,7 @@ const authSlice = createSlice({
         state.isSignedIn = false;
         state.user = user;
       }).addCase(signWithGoogle.fulfilled, (state, action) => {
+        console.log(action.payload)
         const {userId, username, favoritePlants, authProvider} = action.payload
         state.isLoading = false;
         state.isError = null;

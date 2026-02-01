@@ -13,11 +13,11 @@ const authBaseSchema = {
     .required("Please enter your password"),
 };
 export const SignUpSchema = Yup.object().shape({
-  username: Yup.string().trim().max(60),
+  username: Yup.string().trim().max(60).required("Please, write a user name"),
   ...authBaseSchema,
-  confirmPassword: Yup.string()
+  confirm: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords must match")
-    .required(),
+    .required("Please, confirm password"),
 });
 export const SignInSchema = Yup.object().shape({
   ...authBaseSchema,

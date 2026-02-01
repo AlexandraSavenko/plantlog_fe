@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import css from "./SignUpForm.module.css";
 import { selectIsError } from "../../../../redux/auth/selectros";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../../hooks/useDispatch";
 import type { SignUpFormValues } from "../../models/types";
 import { Formik, Form, type FormikHelpers } from "formik";
@@ -13,19 +12,23 @@ import ErrorMessage from "../../../../shared/ui/ErrorMessage/ErrorMessage";
 import { signup } from "../../../../redux/auth/operations";
 import { SignUpSchema } from "../../models/signInSchema";
 import { setErrorNull } from "../../../../redux/auth/slice";
+import { useState } from "react";
+import VerifyEmailMessage from "../../ui/VerifyEmailMessage/VerifyEmailMessage";
 
 const SignupForm = () => {
   const error = useSelector(selectIsError);
-  const navigate = useNavigate();
+  const [verifyModalOpen, setVerifyModalOpen] = useState(false);
   const dispatch = useAppDispatch();
   const handleSubmit = async (
     values: SignUpFormValues,
     actions: FormikHelpers<SignUpFormValues>,
   ): Promise<void> => {
-    const {username, email, password} = values;
-    const res = await dispatch(signup({username, email, password}));
+    console.log("submit")
+    console.log(values)
+    const { username, email, password } = values;
+    const res = await dispatch(signup({ username, email, password }));
     if (signup.fulfilled.match(res)) {
-      navigate("/profile/own");
+      setVerifyModalOpen(true);
     }
     actions.resetForm();
   };
@@ -33,7 +36,7 @@ const SignupForm = () => {
   return (
     <div className={css.formWrap}>
       <Formik
-        initialValues={{username: "", email: "", password: "" }}
+        initialValues={{ username: "", email: "", password: "", confirm: "" }}
         onSubmit={handleSubmit}
         validationSchema={SignUpSchema}
       >
@@ -65,13 +68,17 @@ const SignupForm = () => {
             placeholder={"********"}
           />
           <Button label="Увійти" />
-          {error && (
+        </Form>
+      </Formik>
+      {error && (
             <Modal onClose={() => dispatch(setErrorNull())}>
               {<ErrorMessage />}
             </Modal>
           )}
-        </Form>
-      </Formik>
+          {verifyModalOpen && <Modal onClose={() => setVerifyModalOpen(false)}>{
+            <VerifyEmailMessage/>
+            }
+            </Modal>}
     </div>
   );
 };
