@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signin, signout, signWithGoogle } from "./operations";
-import { handlePending } from "../helpers/helpers";
+import { signin, signout, signup, signWithGoogle, verifyEmail } from "./operations";
 import type { AuthInitialState } from "../types/authTypes";
 
 const user = {
@@ -34,13 +33,17 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      // .addCase(signup.pending, handlePending)
-      // .addCase(signup.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   console.log(action.payload);
-      // })
-      .addCase(signin.pending, handlePending)
+      .addCase(signup.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = null;
+        console.log(action.payload)
+      })
+      .addCase(verifyEmail.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isError = null;
+      })
       .addCase(signin.fulfilled, (state, action) => {
+        console.log("signin extra reduer action.p", action.payload)
         const {userId, username, favoritePlants, authProvider} = action.payload
         state.isLoading = false;
         state.isError = null;

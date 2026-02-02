@@ -1,30 +1,35 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../api/axios";
 import { safeRequest, type ApiError } from "../../api/withErrorHandling";
-import type { AuthFormValues, SignUpPayload } from "../../features/auth/models/types";
-import type { SignInResponse } from "../types/authTypes";
+import type {
+  AuthFormValues,
+  SignUpPayload,
+} from "../../features/auth/models/types";
+import type { AuthResponse, SignInResponse } from "../types/authTypes";
 
 //createAsyncThunk<Returned, ThunkArg, ThunkApiConfig>
 
 export const signup = createAsyncThunk<
-  { message: string },
+  AuthResponse,
   SignUpPayload,
   { rejectValue: ApiError }
->("auth/signin", async (credentials, { rejectWithValue }) => {
+>("auth/signup", async (credentials, { rejectWithValue }) => {
   return safeRequest(async () => {
     const { data } = await api.post("/auth/signup", credentials);
-    // console.log('signup data', data)
-
     return data;
   }, rejectWithValue);
 });
 
-export const verifyEmail = createAsyncThunk("auth/verify", async (token, {rejectWithValue}) => {
+export const verifyEmail = createAsyncThunk<
+  AuthResponse,
+  string,
+  { rejectValue: ApiError }
+>("auth/verify", async (token, { rejectWithValue }) => {
   return safeRequest(async () => {
-const response = api.get("auth/verify", {token})
-
-  }, rejectWithValue )
-})
+    const {data} = await api.get("auth/verify", { params: { token } });
+    return data;
+  }, rejectWithValue);
+});
 export const signin = createAsyncThunk<
   SignInResponse,
   AuthFormValues,
@@ -50,16 +55,17 @@ export const signout = createAsyncThunk(
   },
 );
 
-export const signWithGoogle = createAsyncThunk<SignInResponse, string, {rejectValue: ApiError}>(
-  "auth/gsign",
-  async (code, {rejectWithValue}) => {
-return safeRequest(async () => {
-  const response = await api.post("/auth/confirm-oauth", {code})
-  const { accessToken } = response.data.data;
+export const signWithGoogle = createAsyncThunk<
+  SignInResponse,
+  string,
+  { rejectValue: ApiError }
+>("auth/gsign", async (code, { rejectWithValue }) => {
+  return safeRequest(async () => {
+    const response = await api.post("/auth/confirm-oauth", { code });
+    const { accessToken } = response.data.data;
     api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
     const { data } = await api.get("/user");
     console.log(data.data);
     return data.data;
-}, rejectWithValue)
-  }
-)
+  }, rejectWithValue);
+});

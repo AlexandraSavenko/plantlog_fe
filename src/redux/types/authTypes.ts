@@ -1,4 +1,8 @@
 import type { isError } from "./isError";
+export interface AuthResponse {
+  status: number;
+  message: string;
+}
 
 export interface SignInResponse {
   userId: string;
@@ -18,3 +22,4 @@ export interface AuthInitialState {
   isLoading: boolean;
   isError: isError | null;
 }
+
