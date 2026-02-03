@@ -7,6 +7,7 @@ import type {
 } from "../../features/auth/models/types";
 import type {
   AuthResponse,
+  SignInResponse,
   UserDataResponse,
 } from "../types/authTypes";
 
@@ -41,25 +42,23 @@ export const fetchUserData = createAsyncThunk<
 >("auth/getUser", async (_, { rejectWithValue }) => {
   return safeRequest(async () => {
     const { data } = await api.get("/user");
-    console.log(data.data);
     return data.data;
   }, rejectWithValue);
 });
 
 
 export const signin = createAsyncThunk<
-  UserDataResponse,
+  SignInResponse,
   AuthFormValues,
   { rejectValue: ApiError }
 >("auth/signin", async (credentials, { dispatch, rejectWithValue }) => {
   return safeRequest(async () => {
     const response = await api.post("/auth/signin", credentials);
     const { accessToken } = response.data.data;
-    console.log(response.data.data);
     api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
     const user = await dispatch(fetchUserData()).unwrap()
-    console.log(user)
-    return user;
+    return {accessToken,
+      user};
   }, rejectWithValue);
 });
 
@@ -90,14 +89,16 @@ export const signWithGoogle = createAsyncThunk<
 });
 
 export const refreshUser = createAsyncThunk<
-  null,
+  SignInResponse,
   void,
   { rejectValue: ApiError }
->("auth/refresh", async (_, { rejectWithValue }) => {
+>("auth/refresh", async (_, { dispatch, rejectWithValue }) => {
   return safeRequest(async () => {
-    const { data } = await api.post("/auth/refresh");
-    console.log("refresh data", data);
-    api.defaults.headers.common["Authorization"] = `Bearer ${data.accessToken}`;
-    return null;
+    const response = await api.post("/auth/refresh");
+    const { accessToken } = response.data.data;
+    api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    const user = await dispatch(fetchUserData()).unwrap()
+    return {accessToken,
+      user};
   }, rejectWithValue);
 });

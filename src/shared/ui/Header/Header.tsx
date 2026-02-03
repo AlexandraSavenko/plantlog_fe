@@ -40,13 +40,17 @@ const Header = () => {
           >
             My plants
           </NavLink>
-          <button onClick={handleLogout}>Sign out</button>
+          <button className={css.signBtn} onClick={handleLogout}>
+             <svg className={css.icon}>
+              <use href={"/icons.svg#icon-signout"}></use>
+            </svg>
+          </button>
         </div>
       ) : (
         <div className={css.authWrap}>
-          <button onClick={() => setSignModalOpen(true)}>
+          <button className={css.signBtn} onClick={() => setSignModalOpen(true)}>
             <svg className={css.icon}>
-              <use href={"/icons.svg#icon-sign"}></use>
+              <use href={"/icons.svg#icon-signin"}></use>
             </svg>
           </button>
         </div>

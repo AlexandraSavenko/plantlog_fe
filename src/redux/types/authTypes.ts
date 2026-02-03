@@ -4,11 +4,6 @@ export interface AuthResponse {
   message: string;
 }
 
-export interface SignInResponse extends AuthResponse{
-  data: {
-    accessToken: string
-  }
-}
 export interface UserDataResponse {
   userId: string;
   username: string;
@@ -16,8 +11,13 @@ export interface UserDataResponse {
   authProvider: string;
 }
 
+export interface SignInResponse {
+  accessToken: string,
+  user: UserDataResponse
+}
 export interface AuthInitialState {
   user: UserDataResponse;
+  accessToken: string;
   isSignedIn: boolean;
   isLoading: boolean;
   isError: isError | null;

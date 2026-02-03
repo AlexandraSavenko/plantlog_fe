@@ -39,11 +39,12 @@ color: var(--brown);
     gap: 1rem;
 }
 
-.header .authWrap button{
+.signBtn{
     background-color: transparent;
+    border: 1px solid white;
     width: 28px;
     height: 28px;
-    border-radius: 50%;
+    border-radius: 8px;
     cursor: pointer;
 }
 .header .icon{
