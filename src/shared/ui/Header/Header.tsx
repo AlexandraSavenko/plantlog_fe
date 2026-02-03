@@ -20,6 +20,12 @@ const Header = () => {
   };
   return (
     <div className={`${css.header} container`}>
+      <div className={css.headerMenu}>
+        <button className={css.signBtn}>
+        <svg className={css.icon}>
+              <use href={"/icons.svg#icon-menu"}></use>
+            </svg>
+      </button>
       <NavLink
         className={({ isActive }) =>
           `${isActive && css.activeLink} ${css.link}`
@@ -28,9 +34,11 @@ const Header = () => {
       >
         All plants
       </NavLink>
+      </div>
+      
       {isSignedIn ? (
-        <div>
-          <p>{`Hello, ${user.username}`}</p>
+        <div className={css.isSignedWrapper}>
+          <p>{`Hello, ${user.username} :)`}</p>
 
           <NavLink
             className={({ isActive }) =>

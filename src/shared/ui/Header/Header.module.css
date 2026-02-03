@@ -7,6 +7,12 @@
     justify-content: space-between;
 }
 
+.header .isSignedWrapper{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .header .link{
     color: var(--black);
     transition: transform 0.1s ease;
@@ -41,7 +47,6 @@ color: var(--brown);
 
 .signBtn{
     background-color: transparent;
-    border: 1px solid white;
     width: 28px;
     height: 28px;
     border-radius: 8px;
