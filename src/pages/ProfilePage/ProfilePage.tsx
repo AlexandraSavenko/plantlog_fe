@@ -20,7 +20,7 @@ useEffect(() => {
       {plantType === "fav" && <p>Fav plants</p> }
       <button>
         <svg className={css.icon}>
-              <use href={"/icons.svg#icon-add-circle"}></use>
+              <use href={"/icons.svg#icon-add-plant"}></use>
             </svg>
       </button>
     </div>
