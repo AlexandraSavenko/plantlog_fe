@@ -1,8 +1,8 @@
 import css from './SideBar.module.css'
 
-const SideBar = () => {
+const SideBar = ({sidebarOpen}: {sidebarOpen: boolean}) => {
   return (
-    <div className={css.sidebarWrap}>
+    <div className={`${css.sidebarWrap} ${sidebarOpen && css.isOpen}`}>
       
     </div>
   )

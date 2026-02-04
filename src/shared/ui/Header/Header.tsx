@@ -8,7 +8,7 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import GoogleLoginButton from "../../../features/auth/ui/GoogleAuthButton/GoogleAuthButton";
 
-const Header = () => {
+const Header = ({toggleSidebar}: {toggleSidebar: () => void}) => {
   const [signModalOpen, setSignModalOpen] = useState(false);
   const user = useSelector(selectUser);
   const isSignedIn = useSelector(selectIsSignedIn);
@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <div className={`${css.header} container`}>
       <div className={css.headerMenu}>
-        <button className={css.signBtn}>
+        <button className={css.signBtn} onClick={toggleSidebar}>
         <svg className={css.icon}>
               <use href={"/icons.svg#icon-menu"}></use>
             </svg>

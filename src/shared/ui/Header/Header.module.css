@@ -1,5 +1,5 @@
 .header{
-    background: #6b8c42;
+    background: var(--bright-green);
     padding-top: 1rem;
     padding-bottom: 1rem;
     display: flex;
