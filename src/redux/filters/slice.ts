@@ -20,6 +20,7 @@ const filterInitialState: FilterInitialState = {
             state.origin = origin
         },
         resetFilters: (state) => {
+            console.log("reset", state)
             state.name = "";
             state.growthForm = "";
             state.origin = ""

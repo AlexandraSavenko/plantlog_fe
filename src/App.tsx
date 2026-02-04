@@ -10,13 +10,15 @@ import RestrictedRoute from "./shared/routing/RestrictedRoute";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { useAppDispatch } from "./hooks/useDispatch";
 import { refreshUser } from "./redux/auth/operations";
+import AddPlantPage from "./pages/AddPlantPage/AddPlantPage";
 
 function App() {
   const isAuth = useSelector(selectIsSignedIn);
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (isAuth) {
-      dispatch(refreshUser())    }
+      dispatch(refreshUser());
+    }
   }, []);
   return (
     <Suspense fallback={<div>Loading page...</div>}>
@@ -29,6 +31,14 @@ function App() {
             element={
               <RestrictedRoute isAuth={isAuth} redirectTo="/auth/signin">
                 <ProfilePage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/add-plant"
+            element={
+              <RestrictedRoute isAuth={isAuth} redirectTo="/auth/signin">
+                <AddPlantPage />
               </RestrictedRoute>
             }
           />

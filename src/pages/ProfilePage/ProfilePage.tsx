@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useAppDispatch } from "../../hooks/useDispatch"
 import { useEffect } from "react"
 import { getOwnPlants } from "../../redux/plants/operations"
@@ -18,11 +18,7 @@ useEffect(() => {
     <div className={css.profilePageWrap}>
       {plantType === "own" && <PlantList plants={plants}/> }
       {plantType === "fav" && <p>Fav plants</p> }
-      <button>
-        <svg className={css.icon}>
-              <use href={"/icons.svg#icon-add-plant"}></use>
-            </svg>
-      </button>
+      <Link className={css.addLink} to={"/add-plant"}>+</Link>
     </div>
   )
 }

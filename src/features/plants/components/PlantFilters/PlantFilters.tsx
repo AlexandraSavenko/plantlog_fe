@@ -16,7 +16,7 @@ const GrowthFormList = [
   "succulent",
   "fern",
   "moss",
-]
+];
 
 const PlantFilters = () => {
   const dispatch = useAppDispatch();
@@ -29,22 +29,36 @@ const PlantFilters = () => {
   };
 
   const handleReset = () => {
-    dispatch(resetFilters())
-  }
+    dispatch(resetFilters());
+  };
   return (
     <div className={css.filterWrap}>
       <Formik
         initialValues={{ name: "", origin: "", growthForm: "" }}
         onSubmit={handleSubmitFilters}
       >
-        <Form>
-          <TextInput label="name" name="name" type="text" placeholder="Find a plant by name..." icon="search" />
-        <SelectInput name="origin" options={["wild", "cultivated"]} />
-        <SelectInput name="growthForm" options={GrowthFormList}/>
-        <Button/>
+        <Form className={css.filterForm}>
+          <TextInput
+            label="Find a plant by name."
+            name="name"
+            type="text"
+            placeholder="Plant name..."
+            icon="search"
+          />
+          <SelectInput
+            label="Plant origin"
+            name="origin"
+            options={["wild", "cultivated"]}
+          />
+          <SelectInput
+            label="Growth form"
+            name="growthForm"
+            options={GrowthFormList}
+          />
+          <Button label="Submit" />
         </Form>
       </Formik>
-      <button onClick={handleReset}>Reset Filters</button>
+      <Button label="Resent filters" type="button" onClick={handleReset} />
     </div>
   );
 };

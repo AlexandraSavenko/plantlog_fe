@@ -1,0 +1,12 @@
+.selectWrap{
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.selectWrap select{
+    border-radius: 8px;
+    background-color: var(--pale-yellowish-green);
+    padding: 0.5rem;
+
+}
