@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { selectAllPlantList } from '../../redux/plants/selectors'
 import PlantList from '../../features/plants/components/PlantList/PlantList'
 import { getAllPlants } from '../../redux/plants/operations'
+import NoDataImage from '../../shared/ui/NoDataImage/NoDataImage'
 
 const PlantPage = () => {
   const dispatch = useAppDispatch()
@@ -13,7 +14,7 @@ const PlantPage = () => {
 dispatch(getAllPlants({ page: 1, perPage: 4}))
   }, [])
   if(!plants || plants.length === 0){
-    return <p>Sorry, there's a problem with data</p>
+   <NoDataImage messages={["Sorry, there's a problem with data"]}/>
   }
   return (
     <div className={`${css.plantPage} container`}>

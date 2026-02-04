@@ -1,9 +1,5 @@
 .profilePageWrap{
     min-height: 100vh;
-    background-image: url("/ownPlantsBG.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
     background-color: var(--dark-sand);
     padding-top: 1rem;
     padding-bottom: 1rem;
