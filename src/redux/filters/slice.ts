@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { FilterInitialState } from "../types/filterTypes";
 
 const filterInitialState: FilterInitialState = {
-  id: "",
+  name: "",
   growthForm: "",
   origin: "",
   favourites: false,
@@ -13,7 +13,7 @@ const filterSlice = createSlice({
   reducers: {
     setPlantNameQuery: (state, action) => {
         console.log(action.payload)
-      state.id = action.payload;
+      state.name = action.payload;
     },
     setFormFilters: (state, action) => {
       console.log("reducer", action.payload);
@@ -23,7 +23,7 @@ const filterSlice = createSlice({
     },
     resetFilters: (state) => {
       console.log("reset", state);
-      state.id = "";
+      state.name = "";
       state.growthForm = "";
       state.origin = "";
     },

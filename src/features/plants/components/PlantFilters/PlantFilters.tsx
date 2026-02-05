@@ -24,6 +24,7 @@ const PlantFilters = () => {
     values: FilterFormValues,
     action: FormikHelpers<FilterFormValues>,
   ) => {
+    console.log(values)
     dispatch(setFormFilters(values));
     action.resetForm();
   };
@@ -33,12 +34,12 @@ const PlantFilters = () => {
   };
   return (
     <div className={css.filterWrap}>
-      <SearchByNameInput/>
+      <SearchByNameInput/> 
       <Formik
-        initialValues={{ origin: "", growthForm: "" }}
+        initialValues={{name: "", origin: "", growthForm: "" }}
         onSubmit={handleSubmitFilters}
       >
-        <Form className={css.filterForm}>     
+        <Form className={css.filterForm}>    
           <SelectInput
             label="Plant origin"
             name="origin"

@@ -11,6 +11,7 @@ export interface Plant {
 }
 
 export interface FilterFormValues {
+    name: string,
     growthForm: string,
     origin: string,
 }
