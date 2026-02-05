@@ -2,13 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { safeRequest, type ApiError } from "../../api/withErrorHandling";
 import { api } from "../../api/axios";
 import type { GetPlantsParams, GetPlantsResponse } from "../types/plantsTypes";
+import type { PlantDetails } from "../../features/plants/types";
 
-
-const getPlants = async (
-  params: GetPlantsParams,
-  { rejectWithValue }
-) => {
-  return safeRequest(async () => {    
+const getPlants = async (params: GetPlantsParams, { rejectWithValue }) => {
+  return safeRequest(async () => {
     const { type, page, perPage } = params;
     const query = new URLSearchParams({
       page: page.toString(),
@@ -18,7 +15,8 @@ const getPlants = async (
     const response = await api.get(`${url}?${query}`);
     const { data, ...meta } = response.data.data;
 
-    return { plantList: data, ...meta };  }, rejectWithValue);
+    return { plantList: data, ...meta };
+  }, rejectWithValue);
 };
 export const getAllPlants = createAsyncThunk<
   GetPlantsResponse,
@@ -36,7 +34,6 @@ export const getOwnPlants = createAsyncThunk<
   getPlants({ ...params, type: "own" }, thunkAPI),
 );
 
-
 // console.log("get all plants response", response.data.data.data);
 // data: []
 // hasNextPage: false
@@ -44,3 +41,15 @@ export const getOwnPlants = createAsyncThunk<
 // page: 1
 // perPage: 4
 // totalItems: 4
+
+export const getPlantDetails = createAsyncThunk<
+  PlantDetails,
+  string,
+  { rejectValue: ApiError }
+>("plants/getDetails", async (id, { rejectWithValue }) => {
+  return safeRequest(async () => {
+    const { data } = await api.get(`/plants/${id}`);
+    console.log(data);
+    return data;
+  }, rejectWithValue);
+});

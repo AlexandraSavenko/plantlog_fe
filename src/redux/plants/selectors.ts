@@ -9,3 +9,4 @@ export const selectHasPrevPage = (state: RootState) => state.plants.all.hasPrevP
 export const selectIsLoading = (state: RootState) => state.plants.isLoading;
 export const selectIsError = (state: RootState) => state.plants.isError;
 export const selectOwnPlantList = (state: RootState) => state.plants.own.plantList;
+export const selectPlantDetails = (state: RootState) => state.plants.plantDetails;

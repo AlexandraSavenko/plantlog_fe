@@ -1,4 +1,4 @@
-import type { Plant } from "../../features/plants/types";
+import type { Plant, PlantDetails } from "../../features/plants/types";
 import type { isError } from "./isError";
 
 export interface GetPlantsResponse {
@@ -20,6 +20,7 @@ export interface GetPlantsParams {
 export interface PlantsInitialState {
   all: GetPlantsResponse;
   own: GetPlantsResponse;
+  plantDetails: PlantDetails | null;
   isLoading: boolean;
   isError: isError | null;
 }

@@ -1,0 +1,45 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width="64"
+  height="64"
+>
+  <!-- Pot -->
+  <path
+    d="M18 44h28l-4 12H22z"
+    fill="#c97c5d"
+  />
+  <rect
+    x="16"
+    y="40"
+    width="32"
+    height="6"
+    rx="3"
+    fill="#b56a4a"
+  />
+
+  <!-- Stem -->
+  <path
+    d="M32 40c-2-6-2-12 0-18"
+    stroke="#4caf50"
+    stroke-width="3"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- Head -->
+  <ellipse cx="32" cy="18" rx="12" ry="10" fill="#6fdc8c" />
+
+  <!-- Mouth -->
+  <path
+    d="M22 18c4 4 16 4 20 0"
+    stroke="#2e7d32"
+    stroke-width="2"
+    fill="none"
+    stroke-linecap="round"
+  />
+
+  <!-- Eyes -->
+  <circle cx="28" cy="16" r="1.5" fill="#2e2e2e" />
+  <circle cx="36" cy="16" r="1.5" fill="#2e2e2e" />
+</svg>

@@ -1,17 +1,20 @@
 export interface Plant {
-    _id: string,
-    name: string,
-    description: string,
-    photo: string,
-    growthForm: string,
-    origin: string,
-    userId: string,
-    createdAt: string,
-    updatedAt: string
+  _id: string;
+  name: string;
+  photo: string;
+}
+
+export interface PlantDetails extends Plant {
+  description: string;
+  growthForm: string;
+  origin: string;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface FilterFormValues {
-    name: string,
-    growthForm: string,
-    origin: string,
+  name: string;
+  growthForm: string;
+  origin: string;
 }

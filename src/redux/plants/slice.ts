@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PlantsInitialState } from "../types/plantsTypes";
-import { getAllPlants, getOwnPlants } from "./operations";
+import { getAllPlants, getOwnPlants, getPlantDetails } from "./operations";
 
 
 const plantsInitialState: PlantsInitialState = {
@@ -20,6 +20,7 @@ const plantsInitialState: PlantsInitialState = {
   perPage: 10,
   totalItems: 0,
   },
+  plantDetails: null,
   isLoading: false,
   isError: null,
 };
@@ -50,6 +51,10 @@ const {plantList, page, perPage, totalItems, hasNextPage, hasPrevPage} = action.
         state.own.hasNextPage = hasNextPage
         state.own.hasPrevPage = hasPrevPage
         state.isError = null
+        state.isLoading = false
+    }).addCase(getPlantDetails.fulfilled, (state, action) => {
+      state.plantDetails = action.payload;
+      state.isError = null
         state.isLoading = false
     }),
 });
