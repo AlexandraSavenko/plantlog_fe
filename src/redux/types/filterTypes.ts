@@ -1,5 +1,6 @@
-import type { FilterValues } from "../../features/plants/types";
+import type { FilterFormValues } from "../../features/plants/types";
 
-export interface FilterInitialState extends FilterValues{
-    favourites: boolean,
+export interface FilterInitialState extends FilterFormValues{
+    id: "";
+    favourites: boolean;
 }

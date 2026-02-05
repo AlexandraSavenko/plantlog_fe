@@ -11,7 +11,7 @@ const PlantPage = () => {
   const dispatch = useAppDispatch()
   const plants = useSelector(selectAllPlantList)
   useEffect(() => {
-dispatch(getAllPlants({ page: 1, perPage: 4}))
+dispatch(getAllPlants({ page: 1, perPage: 10}))
   }, [])
   if(!plants || plants.length === 0){
    <NoDataImage messages={["Sorry, there's a problem with data"]}/>

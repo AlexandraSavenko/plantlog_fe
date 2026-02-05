@@ -9,7 +9,7 @@ const plantsInitialState: PlantsInitialState = {
   hasNextPage: false,
   hasPrevPage: false,
   page: 1,
-  perPage: 4,
+  perPage: 10,
   totalItems: 0,
   },
   own: {
@@ -17,7 +17,7 @@ const plantsInitialState: PlantsInitialState = {
   hasNextPage: false,
   hasPrevPage: false,
   page: 1,
-  perPage: 4,
+  perPage: 10,
   totalItems: 0,
   },
   isLoading: false,

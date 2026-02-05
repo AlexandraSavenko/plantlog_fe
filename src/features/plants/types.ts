@@ -10,8 +10,7 @@ export interface Plant {
     updatedAt: string
 }
 
-export interface FilterValues {
-    name: string,
+export interface FilterFormValues {
     growthForm: string,
     origin: string,
 }
