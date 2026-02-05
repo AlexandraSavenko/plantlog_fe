@@ -1,0 +1,46 @@
+.notFoundPage {
+        position: relative;
+
+}
+.notFoundPage img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.notFoundPage::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(235, 230, 154, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.messageWrap{
+    border-radius: 8px;
+    padding: 1rem;
+    width: fit-content;
+    background-color: var(--sand);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.messageWrap p:nth-child(1){
+    color: var(--dark-brown);
+    font-size: 28px;
+}
+.messageWrap p:nth-child(2){
+    color: var(--brown);
+    font-size: 32px;
+}
+.messageWrap a{
+    font-size: 32px;
+    color: var(--black);
+    text-decoration: underline;
+}
+.messageWrap a:hover{
+    color: var(--bright-green);
+}

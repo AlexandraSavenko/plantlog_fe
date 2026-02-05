@@ -9,21 +9,11 @@
 
 .noDataWrap {
     width: 100%;
-    height: auto;
+    height: 600px;
     position: relative;
     overflow: hidden;
-}
-.noDataWrap img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-.noDataWrap::after{
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgba(235, 230, 154, 0.3);
-    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
 }
 
 .messageWrap{
@@ -46,4 +36,10 @@
 .messageWrap p:nth-child(2){
     color: var(--brown);
     font-size: 32px;
+}
+
+.viny{
+    width: 100px;
+    height: auto;
+    background-color: transparent;
 }
