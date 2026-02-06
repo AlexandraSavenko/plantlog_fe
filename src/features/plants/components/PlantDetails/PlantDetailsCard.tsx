@@ -1,13 +1,24 @@
 import css from "./PlantDetailsCard.module.css";
 import type { PlantDetails } from "../../types";
+import { useAppDispatch } from "../../../../hooks/useDispatch";
+import { deletePlant } from "../../../../redux/plants/operations";
+import { useSelector } from "react-redux";
+import { selectIsSignedIn } from "../../../../redux/auth/selectros";
 
 const PlantDetailsCard = ({plant}: {plant: PlantDetails}) => {
-  const { name, description, photo, growthForm, origin } = plant;
+  const dispatch = useAppDispatch()
+  const isAuth = useSelector(selectIsSignedIn)
+  const { _id ,name, description, photo, growthForm, origin } = plant;
+  const handleDelete = () => {
+    dispatch(deletePlant(_id))
+  }
+  
   return (
     <div className={css.plantDetailWrap}>
       <img className={css.img} src={photo} alt={name} />
-      <div className={css.plantDetailMenu}>
-        <button>
+      {
+        isAuth && <div className={css.plantDetailMenu}>
+        <button onClick={handleDelete}>
           <svg className={css.icon}>
           <use href={`/icons.svg#icon-bin`}></use>
         </svg>
@@ -23,6 +34,7 @@ const PlantDetailsCard = ({plant}: {plant: PlantDetails}) => {
         </svg>
         </button>
       </div>
+      }
       <h3>{name}</h3>
       <p>{description}</p>
       <p>{growthForm}</p>

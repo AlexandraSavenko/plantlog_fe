@@ -1,7 +1,6 @@
 import { ErrorMessage, Field } from "formik";
 import css from "./TextInput.module.css";
-import type { TextInputProps } from "./types";
-
+import type { TextInputProps } from "../types";
 
 const TextInput: React.FC<TextInputProps> = ({
   label,
@@ -21,12 +20,18 @@ const TextInput: React.FC<TextInputProps> = ({
           name={name}
           placeholder={placeholder}
         />
-        <svg className={css.icon}>
-          <use href={`/icons.svg#${icon}`}></use>
-        </svg>
+        {icon && (
+          <svg className={css.icon}>
+            <use href={`/icons.svg#${icon}`}></use>
+          </svg>
+        )}
       </div>
       <div className={css.error}>
-              <ErrorMessage className={css.errorMessage} name={name} component="span" />
+        <ErrorMessage
+          className={css.errorMessage}
+          name={name}
+          component="span"
+        />
       </div>
     </div>
   );

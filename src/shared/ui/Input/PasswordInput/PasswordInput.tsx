@@ -1,6 +1,6 @@
 import type React from "react";
 import css from "../TextInput/TextInput.module.css";
-import type { TextInputProps } from "../TextInput/types";
+import type { TextInputProps } from "../types";
 import { ErrorMessage, Field } from "formik";
 import { useState } from "react";
 
@@ -24,7 +24,9 @@ const PasswordInput: React.FC<TextInputProps> = ({
         />
         <span onClick={() => setVisible(!visible)}>
           <svg className={css.icon}>
-            <use href={`/icons.svg#${visible ? "icon-password-show" : "icon-password-hide"}`}></use>
+            <use
+              href={`/icons.svg#${visible ? "icon-password-show" : "icon-password-hide"}`}
+            ></use>
           </svg>
         </span>
       </div>

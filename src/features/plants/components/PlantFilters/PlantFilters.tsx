@@ -6,17 +6,9 @@ import type { FilterFormValues } from "../../types";
 import SelectInput from "../../../../shared/ui/Input/SelectInput/SelectInput";
 import Button from "../../../../shared/ui/Button/Button";
 import SearchByNameInput from "../SearchByNameInput/SearchByNameInput";
+import { GrowthFormList, OriginList } from "../../constants";
 
-const GrowthFormList = [
-  "tree",
-  "shrub",
-  "herb",
-  "grass",
-  "vine",
-  "succulent",
-  "fern",
-  "moss",
-];
+
 
 const PlantFilters = () => {
   const dispatch = useAppDispatch();
@@ -43,7 +35,7 @@ const PlantFilters = () => {
           <SelectInput
             label="Plant origin"
             name="origin"
-            options={["wild", "cultivated"]}
+            options={OriginList}
           />
           <SelectInput
             label="Growth form"
