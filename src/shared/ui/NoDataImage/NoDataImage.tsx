@@ -10,7 +10,7 @@ const NoDataImage = ({ messages }: { messages: string[] }) => {
         ))}
       </div>
 
-      <img className={css.viny} src="/public/VinusFlytrap.png" alt="vinus flytrap" />
+      <img className={css.viny} src="/VinusFlytrap.png" alt="vinus flytrap" />
     </div>
   );
 };

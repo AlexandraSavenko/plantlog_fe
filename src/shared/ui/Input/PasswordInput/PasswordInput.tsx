@@ -24,7 +24,7 @@ const PasswordInput: React.FC<TextInputProps> = ({
         />
         <span onClick={() => setVisible(!visible)}>
           <svg className={css.icon}>
-            <use href={`/icons.svg#${visible ? "icon-eye-open" : "icon-eye-closed"}`}></use>
+            <use href={`/icons.svg#${visible ? "icon-password-show" : "icon-password-hide"}`}></use>
           </svg>
         </span>
       </div>

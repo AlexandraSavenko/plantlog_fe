@@ -48,8 +48,8 @@ export const getPlantDetails = createAsyncThunk<
   { rejectValue: ApiError }
 >("plants/getDetails", async (id, { rejectWithValue }) => {
   return safeRequest(async () => {
-    const { data } = await api.get(`/plants/${id}`);
-    console.log(data);
-    return data;
+    const response = await api.get(`/plants/${id}`);
+    const plantInfo = response.data.data
+    return plantInfo;
   }, rejectWithValue);
 });

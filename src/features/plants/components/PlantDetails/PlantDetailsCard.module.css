@@ -1,0 +1,24 @@
+.plantDetailWrap .img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.plantDetailMenu {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
+    gap: 2px;
+}
+
+.plantDetailMenu button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.plantDetailMenu button .icon {
+width: 24px;
+height: 24px;
+}
