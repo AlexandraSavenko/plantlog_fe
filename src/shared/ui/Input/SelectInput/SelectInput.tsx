@@ -15,7 +15,7 @@ const SelectInput = ({ label, name, options }: SelectInputProps) => {
     <label htmlFor={name}>{label}</label>
     <Field as="select" name={name} className={css.selectInput}>
       <option value="all">
-        Choose a {name}
+        Choose {name}
       </option>
       {options.map((el, index) => (
         <option className={css.selectOption} key={index} value={el}>

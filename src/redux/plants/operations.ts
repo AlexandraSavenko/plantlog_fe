@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { safeRequest, type ApiError } from "../../api/withErrorHandling";
 import { api } from "../../api/axios";
 import type { GetPlantsParams, GetPlantsResponse } from "../types/plantsTypes";
-import type { Plant, PlantDetails } from "../../features/plants/types";
+import type { PlantDetails } from "../../features/plants/types";
 import type { AddPlantFormlValues } from "../../features/plants/components/PlantForm/PlantForm";
 
 const getPlants = async (params: GetPlantsParams, { rejectWithValue }) => {
@@ -59,11 +59,19 @@ export const addPlant = createAsyncThunk<
   PlantDetails,
   AddPlantFormlValues,
   { rejectValue: ApiError }
->("plants/add", async (formData, { rejectWithValue }) => {
+>("plants/add", async (values, { rejectWithValue }) => {
+  //values can't be sent, formData should be formed manually
+  //setting headers to "multipart/form-data" this way is unnecessary, axios does that automatically
+  const formData = new FormData();
+  formData.append("name", values.name);
+  formData.append("descriptio", values.description);
+  formData.append("origin", values.origin);
+  formData.append("growthForm", values.growthForm);
+  if(values.photo){
+    formData.append("photo", values.photo)
+  }
   return safeRequest(async () => {
-    const response = await api.post("/plants", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const response = await api.post("/plants", formData);
     return response.data;
   }, rejectWithValue);
 });

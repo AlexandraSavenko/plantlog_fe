@@ -1,0 +1,4 @@
+.textareaWrap .textarea{
+    resize: none;
+    background-color: var(--pale-yellowish-green);
+}

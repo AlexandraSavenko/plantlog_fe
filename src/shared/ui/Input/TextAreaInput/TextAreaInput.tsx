@@ -10,9 +10,10 @@ const TextAreaInput: React.FC<TextAreaProps> = ({
   rows = 4,
 }) => {
   return (
-    <div>
+    <div className={css.textareaWrap}>
       <label htmlFor={name}>{label}</label>
       <Field
+      className={css.textarea}
         id={name}
         name={name}
         as="textarea"
