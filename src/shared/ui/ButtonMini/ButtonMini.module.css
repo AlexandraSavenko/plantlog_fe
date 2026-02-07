@@ -1,0 +1,38 @@
+.buttonMiniWrap{
+    --size: 36px;
+    --bg: #f6f4ef;
+    --border: #cfc8b8;
+    width: var(--size);
+    height: var(--size);
+
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: linear-gradient(
+        145deg,
+        #fff,
+        var(--bg)
+    );
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    inset: 0 1px 0 rgba(255, 255,255, 0.6);
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.buttonMiniWrap .icon{
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.buttonMiniWrap:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.buttonMiniWrap:active{
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}

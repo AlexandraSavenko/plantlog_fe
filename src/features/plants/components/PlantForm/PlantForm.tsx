@@ -3,11 +3,12 @@ import TextInput from "../../../../shared/ui/Input/TextInput/TextInput";
 import css from "./PlantForm.module.css";
 import { useAppDispatch } from "../../../../hooks/useDispatch";
 import { addPlant } from "../../../../redux/plants/operations";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SelectInput from "../../../../shared/ui/Input/SelectInput/SelectInput";
 import { GrowthFormList, OriginList } from "../../constants";
 import TextAreaInput from "../../../../shared/ui/Input/TextAreaInput/TextAreaInput";
 import Button from "../../../../shared/ui/Button/Button";
+import ButtonMini from "../../../../shared/ui/ButtonMini/ButtonMini";
 
 export interface AddPlantFormlValues {
   name: string;
@@ -26,6 +27,7 @@ const addPlantInitialValues = {
 
 const PlantForm = () => {
   const dispatch = useAppDispatch();
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const handleSubmit = async (
     values: AddPlantFormlValues,
@@ -37,7 +39,7 @@ const PlantForm = () => {
   };
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
-    setFieldValue: (field: string, value: unknown) => void,
+    setFieldValue: FormikHelpers<AddPlantFormlValues>["setFieldValue"],
   ) => {
     // Get the file from the event target
     const file = event.currentTarget.files?.[0];
@@ -54,6 +56,13 @@ const PlantForm = () => {
       }
     };
   }, [previewImage]);
+  const handleDelete = (setFieldValue: FormikHelpers<AddPlantFormlValues>["setFieldValue"]) => {
+    setPreviewImage(null)
+    setFieldValue("photo", null)
+    if(fileInputRef.current){
+      fileInputRef.current.value = ""
+    }
+  }
   //sinse formik performs submission instead of browser, there's no need to set encType="multipart/form-data" on submition, axios will handle that
   return (
     <Formik initialValues={addPlantInitialValues} onSubmit={handleSubmit}>
@@ -61,13 +70,22 @@ const PlantForm = () => {
         <Form>
           <div className={css.photoBox}>
             <input
+            ref={fileInputRef}
+            accept="image/*"
               type="file"
               name="photo"
               id="photo"
               onChange={(event) => handleFileChange(event, setFieldValue)}
             />
             {previewImage ? (
-              <img className={css.img} src={previewImage} alt="preview image" />
+              <div>
+                <ButtonMini onClick={() => handleDelete(setFieldValue)} icon="bin"/>
+                <img
+                  className={css.img}
+                  src={previewImage}
+                  alt="preview image"
+                />
+              </div>
             ) : (
               <svg className={css.icon}>
                 <use href={`/icons.svg#icon-camera`}></use>
