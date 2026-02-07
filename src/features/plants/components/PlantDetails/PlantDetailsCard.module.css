@@ -7,8 +7,8 @@
 }
 
 .plantDetailMenu {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
+  padding: 4px;
+  display: flex;
   gap: 2px;
 }
 

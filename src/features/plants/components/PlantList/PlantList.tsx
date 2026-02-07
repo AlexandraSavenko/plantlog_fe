@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NoDataImage from "../../../../shared/ui/NoDataImage/NoDataImage";
-import type { Plant } from "../../types";
+import type { Plant } from "../../models/types";
 import PlantCard from "../PlantCard/PlantCard";
 import css from "./PlantList.module.css";
 import Modal from "../../../../shared/ui/Modal/Modal";

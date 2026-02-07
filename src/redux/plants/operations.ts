@@ -2,8 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { safeRequest, type ApiError } from "../../api/withErrorHandling";
 import { api } from "../../api/axios";
 import type { GetPlantsParams, GetPlantsResponse } from "../types/plantsTypes";
-import type { PlantDetails } from "../../features/plants/types";
-import type { AddPlantFormlValues } from "../../features/plants/components/PlantForm/PlantForm";
+import type {
+  AddPlantFormlValues,
+  PlantDetails,
+} from "../../features/plants/models/types";
 
 const getPlants = async (params: GetPlantsParams, { rejectWithValue }) => {
   return safeRequest(async () => {
@@ -67,8 +69,8 @@ export const addPlant = createAsyncThunk<
   formData.append("descriptio", values.description);
   formData.append("origin", values.origin);
   formData.append("growthForm", values.growthForm);
-  if(values.photo){
-    formData.append("photo", values.photo)
+  if (values.photo) {
+    formData.append("photo", values.photo);
   }
   return safeRequest(async () => {
     const response = await api.post("/plants", formData);

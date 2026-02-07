@@ -1,4 +1,10 @@
+.photoBox{
+    border: 1px solid red;
+}
 .photoBox .img {
 width: 200px;
 height: auto;
+}
+.photoBox .icon{
+    border: 1px solid red;
 }

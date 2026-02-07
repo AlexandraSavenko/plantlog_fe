@@ -10,7 +10,7 @@ import Button from "../../../../shared/ui/Button/Button";
 import Modal from "../../../../shared/ui/Modal/Modal";
 import ErrorMessage from "../../../../shared/ui/ErrorMessage/ErrorMessage";
 import { signup } from "../../../../redux/auth/operations";
-import { SignUpSchema } from "../../models/signInSchema";
+import { SignUpSchema } from "../../models/validations";
 import { setErrorNull } from "../../../../redux/auth/slice";
 import { useState } from "react";
 import VerifyEmailMessage from "../../ui/VerifyEmailMessage/VerifyEmailMessage";
@@ -23,8 +23,8 @@ const SignupForm = () => {
     values: SignUpFormValues,
     actions: FormikHelpers<SignUpFormValues>,
   ): Promise<void> => {
-    console.log("submit")
-    console.log(values)
+    console.log("submit");
+    console.log(values);
     const { username, email, password } = values;
     const res = await dispatch(signup({ username, email, password }));
     if (signup.fulfilled.match(res)) {
@@ -71,14 +71,15 @@ const SignupForm = () => {
         </Form>
       </Formik>
       {error && (
-            <Modal onClose={() => dispatch(setErrorNull())}>
-              {<ErrorMessage />}
-            </Modal>
-          )}
-          {verifyModalOpen && <Modal onClose={() => setVerifyModalOpen(false)}>{
-            <VerifyEmailMessage/>
-            }
-            </Modal>}
+        <Modal onClose={() => dispatch(setErrorNull())}>
+          {<ErrorMessage />}
+        </Modal>
+      )}
+      {verifyModalOpen && (
+        <Modal onClose={() => setVerifyModalOpen(false)}>
+          {<VerifyEmailMessage />}
+        </Modal>
+      )}
     </div>
   );
 };

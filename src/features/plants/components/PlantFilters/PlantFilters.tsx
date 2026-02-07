@@ -2,13 +2,11 @@ import { Formik, Form, type FormikHelpers } from "formik";
 import { useAppDispatch } from "../../../../hooks/useDispatch";
 import css from "./PlantFilters.module.css";
 import { resetFilters, setFormFilters } from "../../../../redux/filters/slice";
-import type { FilterFormValues } from "../../types";
+import type { FilterFormValues } from "../../models/types";
 import SelectInput from "../../../../shared/ui/Input/SelectInput/SelectInput";
 import Button from "../../../../shared/ui/Button/Button";
 import SearchByNameInput from "../SearchByNameInput/SearchByNameInput";
-import { GrowthFormList, OriginList } from "../../constants";
-
-
+import { growthFormFilterOptions, originFilterOptions} from "../../models/constants";
 
 const PlantFilters = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +14,7 @@ const PlantFilters = () => {
     values: FilterFormValues,
     action: FormikHelpers<FilterFormValues>,
   ) => {
-    console.log(values)
+    console.log(values);
     dispatch(setFormFilters(values));
     action.resetForm();
   };
@@ -26,27 +24,26 @@ const PlantFilters = () => {
   };
   return (
     <div className={css.filterWrap}>
-      <SearchByNameInput/> 
+      <SearchByNameInput />
       <Formik
-        initialValues={{name: "", origin: "", growthForm: "" }}
+        initialValues={{ name: "", origin: "", growthForm: "" }}
         onSubmit={handleSubmitFilters}
       >
-        <Form className={css.filterForm}>    
+        <Form className={css.filterForm}>
           <SelectInput
             label="Plant origin"
             name="origin"
-            options={OriginList}
+            options={originFilterOptions}
           />
           <SelectInput
             label="Growth form"
             name="growthForm"
-            options={GrowthFormList}
+            options={growthFormFilterOptions}
           />
           <Button label="Submit" />
         </Form>
       </Formik>
       <Button label="Resent filters" type="button" onClick={handleReset} />
-      
     </div>
   );
 };

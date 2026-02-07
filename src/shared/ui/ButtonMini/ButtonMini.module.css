@@ -1,5 +1,5 @@
 .buttonMiniWrap{
-    --size: 36px;
+    --size: 32px;
     --bg: #f6f4ef;
     --border: #cfc8b8;
     width: var(--size);
@@ -7,8 +7,8 @@
 
     display: grid;
     place-items: center;
-    border-radius: 10px;
-    border: 1px solid var(--border);
+    border-radius: 4px;
+    border: 1px solid var(--pale-green);
     background: linear-gradient(
         145deg,
         #fff,
@@ -22,7 +22,7 @@
 .buttonMiniWrap .icon{
     width: 18px;
     height: 18px;
-    fill: currentColor;
+    fill: var(--black);
 }
 
 .buttonMiniWrap:hover{

@@ -6,7 +6,7 @@ interface ButtonMiniProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 }
 const ButtonMini: React.FC<ButtonMiniProps> = ({icon, ...props}) => {
   return (
-    <div className={css.buttonMiniWrap}>
+    <div className={`${css.buttonMiniWrap} ${icon}`}>
       <button type='button' {...props}>
         <svg className={css.icon}>
                 <use href={`/icons.svg#icon-${icon}`}></use>

@@ -18,3 +18,11 @@ export interface FilterFormValues {
   growthForm: string;
   origin: string;
 }
+
+export interface AddPlantFormlValues {
+  name: string;
+  description: string;
+  origin: string;
+  growthForm: string;
+  photo: null;
+}

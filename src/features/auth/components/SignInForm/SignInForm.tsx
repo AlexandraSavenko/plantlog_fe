@@ -3,7 +3,7 @@ import css from "./SigninForm.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { signin } from "../../../../redux/auth/operations";
-import { SignInSchema } from "../../models/signInSchema";
+import { SignInSchema } from "../../models/validations";
 import type { AuthFormValues } from "../../models/types";
 import TextInput from "../../../../shared/ui/Input/TextInput/TextInput";
 import ErrorMessage from "../../../../shared/ui/ErrorMessage/ErrorMessage";

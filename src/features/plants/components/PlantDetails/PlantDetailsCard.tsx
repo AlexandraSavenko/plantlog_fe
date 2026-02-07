@@ -1,40 +1,35 @@
 import css from "./PlantDetailsCard.module.css";
-import type { PlantDetails } from "../../types";
+import type { PlantDetails } from "../../models/types";
 import { useAppDispatch } from "../../../../hooks/useDispatch";
 import { deletePlant } from "../../../../redux/plants/operations";
 import { useSelector } from "react-redux";
 import { selectIsSignedIn } from "../../../../redux/auth/selectros";
+import ButtonMini from "../../../../shared/ui/ButtonMini/ButtonMini";
 
-const PlantDetailsCard = ({plant}: {plant: PlantDetails}) => {
-  const dispatch = useAppDispatch()
-  const isAuth = useSelector(selectIsSignedIn)
-  const { _id ,name, description, photo, growthForm, origin } = plant;
+const PlantDetailsCard = ({ plant }: { plant: PlantDetails }) => {
+  const dispatch = useAppDispatch();
+  const isAuth = useSelector(selectIsSignedIn);
+  const { _id, name, description, photo, growthForm, origin } = plant;
   const handleDelete = () => {
-    dispatch(deletePlant(_id))
-  }
-  
+    dispatch(deletePlant(_id));
+  };
+
   return (
     <div className={css.plantDetailWrap}>
       <img className={css.img} src={photo} alt={name} />
-      {
-        isAuth && <div className={css.plantDetailMenu}>
-        <button onClick={handleDelete}>
-          <svg className={css.icon}>
-          <use href={`/icons.svg#icon-bin`}></use>
-        </svg>
-        </button>
-        <button>
-          <svg className={css.icon}>
-          <use href={`/icons.svg#icon-pencil`}></use>
-        </svg>
-        </button>
-        <button>
-          <svg className={css.icon}>
-          <use href={`/icons.svg#icon-star-empty`}></use>
-        </svg>
-        </button>
-      </div>
-      }
+      {isAuth && (
+        <ul className={css.plantDetailMenu}>
+          <li>
+            <ButtonMini icon="delete" onClick={handleDelete} />
+          </li>
+          <li>
+            <ButtonMini icon="edit" />
+          </li>
+          <li>
+            <ButtonMini icon="fav" />
+          </li>
+        </ul>
+      )}
       <h3>{name}</h3>
       <p>{description}</p>
       <p>{growthForm}</p>

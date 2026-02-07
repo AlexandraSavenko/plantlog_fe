@@ -12,3 +12,13 @@ export interface TextAreaProps {
   placeholder: string;
   rows: number;
 }
+
+interface OptionObject {
+  label: string;
+  value: string;
+}
+export interface SelectInputProps {
+  label: string,
+  name: string;
+  options: OptionObject[];
+}

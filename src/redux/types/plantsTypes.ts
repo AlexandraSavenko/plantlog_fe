@@ -1,15 +1,14 @@
-import type { Plant, PlantDetails } from "../../features/plants/types";
+import type { Plant, PlantDetails } from "../../features/plants/models/types";
 import type { isError } from "./isError";
 
 export interface GetPlantsResponse {
-    plantList: Plant[],
-    hasNextPage: boolean,
-    hasPrevPage: boolean,
-    page: number,
-    perPage: number,
-    totalItems: number
+  plantList: Plant[];
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  page: number;
+  perPage: number;
+  totalItems: number;
 }
-
 
 export interface GetPlantsParams {
   type?: string;
