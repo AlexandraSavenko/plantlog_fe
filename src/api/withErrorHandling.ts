@@ -8,6 +8,7 @@ export const safeRequest = async <T>(request: () => Promise<T>, rejectWithValue:
         return await request();
     } catch (error: unknown) {
         if(axios.isAxiosError(error) && error.response){
+            console.log(error.message)
             throw rejectWithValue({status: error.response.status ?? 0})
         }
         throw error

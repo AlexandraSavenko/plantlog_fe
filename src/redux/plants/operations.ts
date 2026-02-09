@@ -66,7 +66,7 @@ export const addPlant = createAsyncThunk<
   //setting headers to "multipart/form-data" this way is unnecessary, axios does that automatically
   const formData = new FormData();
   formData.append("name", values.name);
-  formData.append("descriptio", values.description);
+  formData.append("description", values.description);
   formData.append("origin", values.origin);
   formData.append("growthForm", values.growthForm);
   if (values.photo) {

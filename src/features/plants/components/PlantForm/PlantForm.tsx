@@ -24,6 +24,7 @@ const PlantForm = () => {
     values: AddPlantFormlValues,
     actions: FormikHelpers<AddPlantFormlValues>,
   ): Promise<void> => {
+    console.log(values)
     await dispatch(addPlant(values));
     actions.resetForm();
     setPreviewImage(null);
@@ -63,6 +64,7 @@ const PlantForm = () => {
         <Form>
           <div className={css.photoBox}>
             <input
+            className={css.inputPhoto}
               ref={fileInputRef}
               accept="image/*"
               type="file"
