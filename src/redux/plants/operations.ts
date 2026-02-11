@@ -85,7 +85,6 @@ export const deletePlant = createAsyncThunk<
 >("plants/del", async (id, { rejectWithValue }) => {
   return safeRequest(async () => {
     const { data } = await api.post(`/plants/${id}`);
-    console.log(data);
     return data;
   }, rejectWithValue);
 });

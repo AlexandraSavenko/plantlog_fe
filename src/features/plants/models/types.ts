@@ -4,6 +4,16 @@ export interface Plant {
   photo: string;
 }
 
+export interface PaginationProps {
+  page: number;
+  perPage: number;
+  totalItems: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  isFirstPage: boolean;
+  isLastPage: boolean;
+}
 export interface PlantDetails extends Plant {
   description: string;
   growthForm: string;

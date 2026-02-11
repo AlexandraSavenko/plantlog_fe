@@ -94,10 +94,13 @@ export const refreshUser = createAsyncThunk<
   { rejectValue: ApiError }
 >("auth/refresh", async (_, { dispatch, rejectWithValue }) => {
   return safeRequest(async () => {
+    console.log("refreshing user")
     const response = await api.post("/auth/refresh");
     const { accessToken } = response.data.data;
+    console.log("new accessToken", accessToken)
     api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
     const user = await dispatch(fetchUserData()).unwrap()
+    console.log("user after refresh", user)
     return {accessToken,
       user};
   }, rejectWithValue);
