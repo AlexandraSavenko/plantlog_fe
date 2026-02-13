@@ -27,15 +27,15 @@ const Pagination = ({
   return (
     <ul className={css.paginationList}>
       <li className={`${css.li} ${!hasPrevPage && css.disabled}`}>
-        <ButtonMini disabled={!hasPrevPage} onClick={() => onPageChange(page - 1)} icon="pagination-backwards" />
+        <ButtonMini disabled={!hasPrevPage} onClick={() => {onPageChange(page - 1)}} icon="pagination-backwards" />
       </li>
       {visiblePages.map((el) => (
         <li className={`${css.li}`} key={el}>
-          <ButtonMini isActive={el === page} onClick={() => onPageChange(el)} label={el} />
+          <ButtonMini isActive={el === page} onClick={() => { console.log("button pressed"); onPageChange(el)}} label={el} />
         </li>
       ))}
       <li className={`${css.li} ${!hasNextPage && css.disabled}`}>
-        <ButtonMini disabled={!hasNextPage} onClick={() => onPageChange(page + 1)} icon="pagination-forwards" />
+        <ButtonMini disabled={!hasNextPage} onClick={() => {onPageChange(page + 1)}} icon="pagination-forwards" />
       </li>
     </ul>
   );

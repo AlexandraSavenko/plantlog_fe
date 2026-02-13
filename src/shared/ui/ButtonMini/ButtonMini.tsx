@@ -14,7 +14,7 @@ const ButtonMini: React.FC<ButtonMiniProps> = ({
 }) => {
   return (
     <div className={`${css.buttonMiniWrap}`}>
-      <button className={`${isActive ? css.isActive : css.notActive}`} disabled={!isActive} type="button" {...props}>
+      <button className={`${isActive ? css.isActive : css.notActive}`} type="button" {...props}>
         {label && label}
         {icon && (
           <svg className={css.icon}>

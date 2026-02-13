@@ -28,6 +28,8 @@ const plantsSlice = createSlice({
   initialState: plantsInitialState,
   reducers: {
     setPage: (state, action: PayloadAction<{ scope: Scope; page: number }>) => {
+      console.log("page", state.all.page)
+      console.log("page", action.payload.page)
       state[action.payload.scope].page = action.payload.page;
     },
   },
