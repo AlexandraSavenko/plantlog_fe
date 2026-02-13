@@ -1,0 +1,8 @@
+.paginationList{
+    display: flex;
+    border: 1px solid red;
+}
+
+.paginationList .disabled{
+pointer-events: none;
+}

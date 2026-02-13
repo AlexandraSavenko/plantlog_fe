@@ -2,13 +2,13 @@ import React, { useMemo, useState } from "react";
 import css from "./SearchByNameInput.module.css";
 import { useDebounce } from "use-debounce";
 import { useSelector } from "react-redux";
-import { selectAllPlantList } from "../../../../redux/plants/selectors";
 import { useAppDispatch } from "../../../../hooks/useDispatch";
 import { setPlantNameQuery } from "../../../../redux/filters/slice";
+import { selectPlants } from "../../../../redux/plants/selectors";
 
 const SearchByNameInput = () => {
   const dispatch = useAppDispatch();
-  const plantList = useSelector(selectAllPlantList);
+  const plantList = useSelector(selectPlants("all"));
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPlant, setSelectedPlant] = useState("");
   const [debounceValue] = useDebounce(searchQuery, 1000);

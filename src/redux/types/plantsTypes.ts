@@ -1,6 +1,7 @@
 import type { Plant, PlantDetails } from "../../features/plants/models/types";
 import type { isError } from "./isError";
 
+export type Scope = "all" | "own" 
 export interface GetPlantsResponse {
   plantList: Plant[];
   hasNextPage: boolean;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NoDataImage from "../../../../shared/ui/NoDataImage/NoDataImage";
-import type { PaginationProps, Plant } from "../../models/types";
+import type { PlantListProps } from "../../models/types";
 import PlantCard from "../PlantCard/PlantCard";
 import css from "./PlantList.module.css";
 import Modal from "../../../../shared/ui/Modal/Modal";
@@ -11,11 +11,8 @@ import { selectPlantDetails } from "../../../../redux/plants/selectors";
 import PlantDetailsCard from "../PlantDetails/PlantDetailsCard";
 import Pagination from "../../../../shared/ui/Pagination/Pagination";
 
-interface PlantListProps {
-  plants: Plant[];
-  pagination: PaginationProps
-}
-const PlantList = ({ plants, pagination }: PlantListProps) => {
+
+const PlantList = ({ plants, pagination, onPageChange }: PlantListProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const plantDetailsInfo = useSelector(selectPlantDetails);
   const dispatch = useAppDispatch();
@@ -43,7 +40,7 @@ const PlantList = ({ plants, pagination }: PlantListProps) => {
           </li>
         ))}
       </ul>
-      {pagination.page > 1 && <Pagination {...pagination}/>}
+      { <Pagination {...pagination} onPageChange={onPageChange}/>}
       {isModalOpen && plantDetailsInfo && (
         <Modal onClose={() => setIsModalOpen(false)}>
           {<PlantDetailsCard plant={plantDetailsInfo} />}
