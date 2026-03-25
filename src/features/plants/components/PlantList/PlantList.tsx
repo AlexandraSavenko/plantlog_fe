@@ -32,7 +32,7 @@ const PlantList = ({ plants, pagination, onPageChange }: PlantListProps) => {
     setIsModalOpen(true);
   };
   return (
-    <div>
+    <div className={css.plantPageWrap}>
       <ul className={css.plantList}>
         {plants.map((el) => (
           <li key={el._id} onClick={() => handleClick(el._id)}>

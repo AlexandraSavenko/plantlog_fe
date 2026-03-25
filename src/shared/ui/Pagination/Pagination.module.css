@@ -1,8 +1,11 @@
 .paginationList{
     display: flex;
-    border: 1px solid red;
+    justify-content: center;
+    gap: 4px;
+
 }
 
 .paginationList .disabled{
 pointer-events: none;
+display: none;
 }
